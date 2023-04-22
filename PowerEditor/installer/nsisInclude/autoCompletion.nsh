@@ -14,276 +14,66 @@
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+!macro autoCompletion Mode
+	SetOverwrite off
+	!insertmacro autoCompletion${Mode}Lang "ActionScript" ActionScript "actionscript.xml"
+	!insertmacro autoCompletion${Mode}Lang "AutoIt" AutoIt "autoit.xml"
+	!insertmacro autoCompletion${Mode}Lang "BaanC" BaanC "baanc.xml"
+	!insertmacro autoCompletion${Mode}Lang "BATCH" BATCH "batch.xml"
+	!insertmacro autoCompletion${Mode}Lang "C" C "c.xml"
+	!insertmacro autoCompletion${Mode}Lang "C++" C++ "cpp.xml"
+	!insertmacro autoCompletion${Mode}Lang "C#" C# "cs.xml"
+	!insertmacro autoCompletion${Mode}Lang "CMAKE" CMAKE "cmake.xml"
+	!insertmacro autoCompletion${Mode}Lang "COBOL" COBOL "cobol.xml"
+	!insertmacro autoCompletion${Mode}Lang "CoffeeScript" CoffeeScript "coffee.xml"
+	!insertmacro autoCompletion${Mode}Lang "CSS" CSS "css.xml"
+	!insertmacro autoCompletion${Mode}Lang "DocBook" DocBook "xml.xml"
+	!insertmacro autoCompletion${Mode}Lang "GDScript" GDScript "gdscript.xml"
+	!insertmacro autoCompletion${Mode}Lang "HTML" HTML "html.xml"
+	!insertmacro autoCompletion${Mode}Lang "Java" Java "java.xml"
+	!insertmacro autoCompletion${Mode}Lang "JavaScript" JavaScript "javascript.xml"
+	!insertmacro autoCompletion${Mode}Lang "LISP" LISP "lisp.xml"
+	!insertmacro autoCompletion${Mode}Lang "Lua" Lua "lua.xml"
+	!insertmacro autoCompletion${Mode}Lang "NSIS" NSIS "nsis.xml"
+	!insertmacro autoCompletion${Mode}Lang "Perl" Perl "perl.xml"
+	!insertmacro autoCompletion${Mode}Lang "PHP" PHP "php.xml"
+	!insertmacro autoCompletion${Mode}Lang "PowerShell" PowerShell "powershell.xml"
+	!insertmacro autoCompletion${Mode}Lang "Python" Python "python.xml"
+	!insertmacro autoCompletion${Mode}Lang "RC" RC "rc.xml"
+	!insertmacro autoCompletion${Mode}Lang "SQL" SQL "sql.xml"
+	!insertmacro autoCompletion${Mode}Lang "TeX" TeX "tex.xml"
+	!insertmacro autoCompletion${Mode}Lang "TypeScript" TypeScript "typescript.xml"
+	!insertmacro autoCompletion${Mode}Lang "VB" VB "vb.xml"
+	!insertmacro autoCompletion${Mode}Lang "VHDL" VHDL "vhdl.xml"
+	SetOverwrite lastused
+!macroend
+
 
 SectionGroup "Auto-completion Files" autoCompletionComponent
-	SetOverwrite off
-	
-	${MementoSection} "C" C
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\c.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "C++" C++
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\cpp.xml"
-	${MementoSectionEnd}
 
-	${MementoSection} "Java" Java
+	Section
 		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\java.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "C#" C#
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\cs.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "HTML" HTML
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\html.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "RC" RC
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\rc.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "SQL" SQL
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\sql.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "PHP" PHP
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\php.xml"
-	${MementoSectionEnd}
+	SectionEnd
 
-	${MementoSection} "CSS" CSS
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\css.xml"
+	!macro autoCompletionInstallLang DisplayName MementoName XmlFile
+	${MementoSection} "${DisplayName}" ${MementoName}
+		File ".\APIs\${XmlFile}"
 	${MementoSectionEnd}
+	!macroend
 
-	${MementoSection} "VB" VB
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\vb.xml"
-	${MementoSectionEnd}
-
-	${MementoSection} "Perl" Perl
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\perl.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "JavaScript" JavaScript
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\javascript.xml"
-	${MementoSectionEnd}
-
-	${MementoSection} "Python" Python
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\python.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "ActionScript" ActionScript
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\actionscript.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "LISP" LISP
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\lisp.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "VHDL" VHDL
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\vhdl.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "TeX" TeX
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\tex.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "DocBook" DocBook
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\xml.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "NSIS" NSIS
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\nsis.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "CMAKE" CMAKE
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\cmake.xml"
-	${MementoSectionEnd}
-
-	${MementoSection} "BATCH" BATCH
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\batch.xml"
-	${MementoSectionEnd}
-	
-	${MementoSection} "CoffeeScript" CoffeeScript
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\coffee.xml"
-	${MementoSectionEnd}
-
-	${MementoSection} "BaanC" BaanC
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\baanc.xml"
-	${MementoSectionEnd}
-
-	${MementoSection} "Lua" Lua
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\lua.xml"
-	${MementoSectionEnd}
-
-	${MementoSection} "AutoIt" AutoIt
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\autoit.xml"
-	${MementoSectionEnd}
-
-	${MementoSection} "COBOL" COBOL
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\cobol.xml"
-	${MementoSectionEnd}
-
-	${MementoSection} "TypeScript" TypeScript
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\typescript.xml"
-	${MementoSectionEnd}
-
-	${MementoSection} "PowerShell" PowerShell
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\powershell.xml"
-	${MementoSectionEnd}
-
-	${MementoSection} "GDScript" GDScript
-		SetOutPath "$INSTDIR\autoCompletion"
-		File ".\APIs\gdscript.xml"
-	${MementoSectionEnd}
-
+	!insertmacro autoCompletion Install
 
 SectionGroupEnd
 
 
+SectionGroup -un.autoCompletionComponent
 
-SectionGroup un.autoCompletionComponent
-	Section un.PHP
-		Delete "$INSTDIR\autoCompletion\php.xml"
+	!macro autoCompletionUninstallLang DisplayName MementoName XmlFile
+	Section "-un.${DisplayName}"
+		Delete "$INSTDIR\autoCompletion\${XmlFile}"
 	SectionEnd
+	!macroend
 
-	Section un.CSS
-		Delete "$INSTDIR\autoCompletion\css.xml"
-	SectionEnd	
-	
-	Section un.HTML
-		Delete "$INSTDIR\autoCompletion\html.xml"
-	SectionEnd
-	
-	Section un.SQL
-		Delete "$INSTDIR\autoCompletion\sql.xml"
-	SectionEnd
-	
-	Section un.RC
-		Delete "$INSTDIR\autoCompletion\rc.xml"
-	SectionEnd
-
-	Section un.VB
-		Delete "$INSTDIR\autoCompletion\vb.xml"
-	SectionEnd
-
-	Section un.Perl
-		Delete "$INSTDIR\autoCompletion\perl.xml"
-	SectionEnd
-
-	Section un.C
-		Delete "$INSTDIR\autoCompletion\c.xml"
-	SectionEnd
-	
-	Section un.C++
-		Delete "$INSTDIR\autoCompletion\cpp.xml"
-	SectionEnd
-	
-	Section un.Java
-		Delete "$INSTDIR\autoCompletion\java.xml"
-	SectionEnd
-	
-	Section un.C#
-		Delete "$INSTDIR\autoCompletion\cs.xml"
-	SectionEnd
-	
-	Section un.JavaScript
-		Delete "$INSTDIR\autoCompletion\javascript.xml"
-	SectionEnd
-
-	Section un.Python
-		Delete "$INSTDIR\autoCompletion\python.xml"
-	SectionEnd
-
-	Section un.ActionScript
-		Delete "$INSTDIR\autoCompletion\actionscript.xml"
-	SectionEnd
-	
-	Section un.LISP
-		Delete "$INSTDIR\autoCompletion\lisp.xml"
-	SectionEnd
-	
-	Section un.VHDL
-		Delete "$INSTDIR\autoCompletion\vhdl.xml"
-	SectionEnd	
-	
-	Section un.TeX
-		Delete "$INSTDIR\autoCompletion\tex.xml"
-	SectionEnd
-	
-	Section un.DocBook
-		Delete "$INSTDIR\autoCompletion\xml.xml"
-	SectionEnd
-	
-	Section un.NSIS
-		Delete "$INSTDIR\autoCompletion\nsis.xml"
-	SectionEnd
-	
-	Section un.CMAKE
-		Delete "$INSTDIR\autoCompletion\cmake.xml"
-	SectionEnd
-
-	Section un.BATCH
-		Delete "$INSTDIR\autoCompletion\batch.xml"
-	SectionEnd
-	
-	Section un.CoffeeScript
-		Delete "$INSTDIR\autoCompletion\coffee.xml"
-	SectionEnd
-
-	Section un.BaanC
-		Delete "$INSTDIR\autoCompletion\baanc.xml"
-	SectionEnd
-
-	Section un.Lua
-		Delete "$INSTDIR\autoCompletion\lua.xml"
-	SectionEnd
-
-	Section un.AutoIt
-		Delete "$INSTDIR\autoCompletion\autoit.xml"
-	SectionEnd
-
-	Section un.COBOL
-		Delete "$INSTDIR\autoCompletion\cobol.xml"
-	SectionEnd
-
-	Section un.TypeScript
-		Delete "$INSTDIR\autoCompletion\typescript.xml"
-	SectionEnd
-
-	Section un.PowerShell
-		Delete "$INSTDIR\autoCompletion\powershell.xml"
-	SectionEnd
-
-	Section un.GDScript
-		Delete "$INSTDIR\autoCompletion\gdscript.xml"
-	SectionEnd
-
+	!insertmacro autoCompletion Uninstall
 
 SectionGroupEnd
