@@ -242,8 +242,6 @@ Section -"Notepad++" mainSection
 
 	Call shortcutLinkManagement
 
-	; save selected language to registry
-	WriteRegStr HKLM "SOFTWARE\${APPNAME}" 'InstallerLanguage' '$Language'
 
 SectionEnd
 
@@ -327,6 +325,10 @@ FunctionEnd
 
 Section -FinishSection
   Call writeInstallInfoInRegistry
+
+	; save selected language to registry
+	SetRegView 32 ; .onInit expects this to be in the 32-bit view
+	WriteRegStr HKLM "SOFTWARE\${APPNAME}" 'InstallerLanguage' '$Language'
 SectionEnd
 
 BrandingText "Software is like sex: It's better when it's free"
